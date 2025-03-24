@@ -5,6 +5,7 @@ import MainCTA from '../components/MainCTA';
 import TestimonialCarousel from '../components/TestimonialCarousel';
 import { testimonials } from '../data/testimonials';
 import {useState} from "react";
+import PricingCards from "@/components/PricingCard";
 
 export default function Home() {
     const [authModalOpen, setAuthModalOpen] = useState(false);
@@ -142,6 +143,9 @@ export default function Home() {
                         </motion.div>
                     </div>
                 </section>
+
+                {/* Pricing section */}
+                <PricingCards/>
 
                 {/* Testimonials Section */}
                 <TestimonialCarousel testimonials={testimonials} />
