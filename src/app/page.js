@@ -124,7 +124,7 @@ export default function Home() {
                         >
                             <h2 className="text-3xl font-bold text-gray-800 mb-6">About Our Company</h2>
                             <p className="text-gray-600 mb-6">
-                                We're a team of medical professionals and data scientists committed to improving medication adherence and outcomes through personalized recommendations.
+                                We&apos;re a team of medical professionals and data scientists committed to improving medication adherence and outcomes through personalized recommendations.
                             </p>
                             <p className="text-gray-600 mb-6">
                                 Our proprietary algorithm analyzes hundreds of data points to match patients with the medication most likely to be effective for their specific condition and physiology.
