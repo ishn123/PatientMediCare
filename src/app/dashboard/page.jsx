@@ -3,6 +3,7 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../context/auth';
 import Link from 'next/link';
+import Header from "@/components/Header";
 
 export default function Dashboard() {
     const { user } = useContext(AuthContext);
