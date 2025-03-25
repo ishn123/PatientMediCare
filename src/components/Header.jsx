@@ -4,6 +4,7 @@ import { useState, useContext } from 'react';
 import { AuthContext } from '../context/auth';
 import AuthModal from './AuthModal';
 import Link from 'next/link';
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -11,7 +12,7 @@ export default function Header() {
     const { user, isAuthenticated, logout } = useContext(AuthContext);
 
     return (
-        <header className="bg-white shadow-sm sticky top-0 z-50">
+        <header className="bg-white shadow-sm sticky top-0 z-50 dark:bg-gray-800">
             <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                 <Link href="/" className="text-2xl font-bold text-blue-600">MediMatch</Link>
 
@@ -23,18 +24,20 @@ export default function Header() {
                     {isAuthenticated ? (
                         <div className="flex items-center space-x-4">
                             <span className="text-gray-700">Hi, {user.name}</span>
-                            <button onClick={logout} className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full hover:bg-gray-300 transition">
+                            <button onClick={logout}
+                                    className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full hover:bg-gray-300 transition">
                                 Logout
                             </button>
                         </div>
                     ) : (
                         <button
                             onClick={() => setAuthModalOpen(true)}
-                            className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition"
+                            className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition dark:bg-white dark:text-black"
                         >
                             Login / Register
                         </button>
                     )}
+                    <ThemeToggle/>
                 </nav>
 
                 <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
@@ -42,7 +45,7 @@ export default function Header() {
                 </button>
             </div>
 
-            {authModalOpen && <AuthModal onClose={() => setAuthModalOpen(false)} />}
+            {authModalOpen && <AuthModal onClose={() => setAuthModalOpen(false)}/>}
         </header>
     );
 }

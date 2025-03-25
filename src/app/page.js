@@ -12,9 +12,9 @@ export default function Home() {
     return (
         <>
             <Header />
-            <main>
+            <main className="dark:bg-gray-800">
                 {/* Hero Section */}
-                <section className="bg-gradient-to-r from-blue-50 to-indigo-50 py-20">
+                <section className="bg-gradient-to-r from-blue-50 to-indigo-50 py-20 dark:bg-gray-800">
                     <div className="container mx-auto px-6 flex flex-col md:flex-row items-center">
                         <div className="md:w-1/2 mb-12 md:mb-0">
                             <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
@@ -38,10 +38,10 @@ export default function Home() {
                 </section>
 
                 {/* How It Works Section */}
-                <section id="how-it-works" className="py-20 bg-white">
+                <section id="how-it-works" className="py-20 bg-white dark:bg-gray-800 dark:text-white"  >
                     <div className="container mx-auto px-6">
                         <motion.h2
-                            className="text-3xl font-bold text-center text-gray-800 mb-16"
+                            className="text-3xl font-bold text-center text-gray-800 mb-16 dark:text-white"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -50,7 +50,7 @@ export default function Home() {
                             Simple, Science-Backed Process
                         </motion.h2>
 
-                        <div className="grid md:grid-cols-3 gap-10">
+                        <div className="grid md:grid-cols-3 gap-10 dark:text-gray-800">
                             {[
                                 {
                                     number: "1",
@@ -73,15 +73,15 @@ export default function Home() {
                             ].map((step, index) => (
                                 <motion.div
                                     key={index}
-                                    className="text-center p-6 bg-gray-50 rounded-xl"
+                                    className="text-center p-6 bg-gray-50 rounded-xl dark:text-black"
                                     initial={{ opacity: 0, y: 30 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
                                     whileHover={{ y: -5 }}
                                 >
-                                    <div className="text-4xl mb-4">{step.icon}</div>
-                                    <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
+                                    <div className="text-4xl mb-4 dark:text-black">{step.icon}</div>
+                                    <h3 className="text-xl font-semibold mb-3 dark:text-black">{step.title}</h3>
                                     <p className="text-gray-600">{step.description}</p>
                                 </motion.div>
                             ))}
@@ -90,16 +90,16 @@ export default function Home() {
                 </section>
 
                 {/* About Us Section */}
-                <section id="about" className="py-20 bg-gray-50">
-                    <div className="container mx-auto px-6 flex flex-col md:flex-row items-center">
+                <section id="about" className="py-20 bg-gray-50 dark:bg-gray-800">
+                    <div className="container mx-auto px-6 flex flex-col md:flex-row items-center dark:text-gray-600">
                         <motion.div
-                            className="md:w-1/2 mb-12 md:mb-0"
+                            className="md:w-1/2 mb-12 md:mb-0 dark:text-gray-800"
                             initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
                         >
-                            <div className="bg-blue-100 rounded-xl h-80 w-full flex items-center justify-center">
+                            <div className="bg-blue-100 rounded-xl h-80 w-full flex items-center justify-center dark:text-gray-800">
                                 <motion.img
                                     src="/images/team-illustration.svg"
                                     alt="Our team"
@@ -117,17 +117,17 @@ export default function Home() {
                         </motion.div>
 
                         <motion.div
-                            className="md:w-1/2 md:pl-12"
+                            className="md:w-1/2 md:pl-12 dark:text-gray-800"
                             initial={{ opacity: 0, x: 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
-                            <h2 className="text-3xl font-bold text-gray-800 mb-6">About Our Company</h2>
-                            <p className="text-gray-600 mb-6">
+                            <h2 className="text-3xl font-bold text-gray-800 mb-6 dark:text-white">About Our Company</h2>
+                            <p className="text-gray-600 mb-6 dark:text-white">
                                 We&apos;re a team of medical professionals and data scientists committed to improving medication adherence and outcomes through personalized recommendations.
                             </p>
-                            <p className="text-gray-600 mb-6">
+                            <p className="text-gray-600 mb-6 dark:text-white">
                                 Our proprietary algorithm analyzes hundreds of data points to match patients with the medication most likely to be effective for their specific condition and physiology.
                             </p>
                             <div className="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">

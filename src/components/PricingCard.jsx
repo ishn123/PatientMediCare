@@ -120,7 +120,7 @@ export default function PricingCards() {
     };
 
     return (
-        <section id="pricing" className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <section id="pricing" className="py-20 bg-gradient-to-b from-gray-50 to-white dark:text-black">
             <div className="container mx-auto px-6">
                 <motion.div
                     className="text-center mb-12"
@@ -129,13 +129,13 @@ export default function PricingCards() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h2 className="text-3xl font-bold text-gray-800 mb-2">Flexible Plans</h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto mb-6">
+                    <h2 className="text-3xl font-bold text-gray-800 mb-2 dark:text-black">Flexible Plans</h2>
+                    <p className="text-gray-600 max-w-2xl mx-auto mb-6 dark:text-black">
                         Choose the perfect plan for your health journey
                     </p>
 
                     <motion.div
-                        className="flex items-center justify-center mb-8"
+                        className="flex items-center justify-center mb-8 dark:text-black"
                         whileHover={{ scale: 1.05 }}
                     >
             <span className={`mr-3 font-medium ${billingCycle === 'monthly' ? 'text-gray-800' : 'text-gray-400'}`}>
@@ -143,16 +143,16 @@ export default function PricingCards() {
             </span>
                         <button
                             onClick={toggleBilling}
-                            className="relative w-14 h-8 bg-gray-200 rounded-full p-1 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                            className="relative w-14 h-8 bg-gray-200 rounded-full p-1 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:text-black"
                         >
                             <motion.div
-                                className={`absolute top-1 w-6 h-6 rounded-full shadow-md transition-colors ${billingCycle === 'yearly' ? 'bg-purple-600 right-1' : 'bg-white left-1'}`}
+                                className={`absolute top-1 w-6 h-6 rounded-full shadow-md transition-colors ${billingCycle === 'yearly' ? 'bg-purple-600 right-1' : 'bg-white left-1'} dark:text-black`}
                                 layout
                                 transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                             />
                         </button>
-                        <span className={`ml-3 font-medium ${billingCycle === 'yearly' ? 'text-purple-600' : 'text-gray-400'}`}>
-              Yearly <span className="text-sm bg-purple-100 text-purple-800 px-2 py-1 rounded-full ml-1">Save 20%</span>
+                        <span className={`ml-3 font-medium ${billingCycle === 'yearly' ? 'text-purple-600' : 'text-gray-400'} dark:text-black`}>
+              Yearly <span className="text-sm bg-purple-100 text-purple-800 px-2 py-1 rounded-full ml-1 dark:text-black">Save 20%</span>
             </span>
                     </motion.div>
                 </motion.div>
@@ -171,12 +171,12 @@ export default function PricingCards() {
                         >
                             {plan.highlight && (
                                 <motion.div
-                                    className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold px-4 py-1 rounded-full flex items-center shadow-lg z-10"
+                                    className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold px-4 py-1 rounded-full flex items-center shadow-lg z-10 dark:text-black"
                                     initial={{ scale: 0 }}
                                     animate={{ scale: 1 }}
                                     transition={{ delay: 0.3 }}
                                 >
-                                    <FiStar className="mr-1" /> RECOMMENDED
+                                    <FiStar className="mr-1 dark:text-black" /> RECOMMENDED
                                 </motion.div>
                             )}
 
@@ -188,11 +188,11 @@ export default function PricingCards() {
                                     borderColor: hoveredPlan === plan.id ? (plan.highlight ? '#a78bfa' : '#93c5fd') : plan.border.split('-')[2]
                                 }}
                             >
-                                <div className={`bg-gradient-to-br ${plan.color} p-6`}>
-                                    <h3 className="text-2xl font-bold text-gray-800">{plan.name}</h3>
-                                    <div className="mt-4 flex items-end">
-                                        <span className="text-4xl font-bold text-gray-800">€{plan.price}</span>
-                                        <span className="text-gray-600 ml-2 mb-1">/{plan.period}</span>
+                                <div className={`bg-gradient-to-br ${plan.color} p-6 dark:text-black`}>
+                                    <h3 className="text-2xl font-bold text-gray-800 dark:text-black">{plan.name}</h3>
+                                    <div className="mt-4 flex items-end dark:text-black">
+                                        <span className="text-4xl font-bold text-gray-800 dark:text-black">€{plan.price}</span>
+                                        <span className="text-gray-600 ml-2 mb-1 dark:text-black">/{plan.period}</span>
                                     </div>
                                 </div>
 
@@ -201,7 +201,7 @@ export default function PricingCards() {
                                         {plan.features.map((feature, i) => (
                                             <motion.li
                                                 key={i}
-                                                className="flex items-start"
+                                                className="flex items-start dark:text-black"
                                                 initial={{ opacity: 0, x: -10 }}
                                                 animate={{ opacity: 1, x: 0 }}
                                                 transition={{ delay: 0.5 + (i * 0.1) }}

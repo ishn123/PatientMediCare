@@ -83,7 +83,7 @@ export default function AuthModal({ onClose }) {
 
     return (
         <AnimatePresence>
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 dark:text-black">
                 {/* Blur Overlay */}
                 <motion.div
                     initial={{backdropFilter: 'blur(0px)'}}
@@ -92,7 +92,7 @@ export default function AuthModal({ onClose }) {
                     transition={{duration: 0.3}}
                     onClick={onClose}
                     style={{backgroundColor:"transparent"}}
-                    className="fixed inset-0 bg-black bg-opacity-20 backdrop-blur-sm"
+                    className="fixed inset-0 bg-black bg-opacity-20 backdrop-blur-sm dark:text-black"
                 />
 
                 {/* Modal Content */}
@@ -106,26 +106,26 @@ export default function AuthModal({ onClose }) {
             ${isMobile ?
                         'fixed bottom-0 left-0 right-0 rounded-t-3xl' :
                         'rounded-xl'}
-          `}
+          dark:text-black`}
 
                     >
                     <div className={`
             bg-white p-6
             ${isMobile ? 'rounded-t-3xl' : 'rounded-xl shadow-xl'}
           `}>
-                        <div className="flex justify-between items-center mb-6">
-                            <h2 className="text-2xl font-bold">
-                                {isLogin ? 'Sign In' : 'Create Account'}
+                        <div className="flex justify-between items-center mb-6 dark:text-black">
+                            <h2 className="text-2xl font-bold dark:text-black">
+                                {isLogin ? 'Sign In 🙏🏼' : 'Create Account'}
                             </h2>
                             {!isMobile && (
-                                <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+                                <button onClick={onClose} className="text-gray-500 hover:text-gray-700 dark:text-black">
                                     ✕
                                 </button>
                             )}
                         </div>
 
                         {error && (
-                            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 dark:text-black">
                                 {error}
                             </div>
                         )}
@@ -133,13 +133,13 @@ export default function AuthModal({ onClose }) {
                         <form onSubmit={handleSubmit}>
                             {!isLogin && (
                                 <div className="mb-4">
-                                    <label className="block text-gray-700 mb-2" htmlFor="name">
+                                    <label className="block text-gray-700 mb-2 dark:text-black" htmlFor="name">
                                         Full Name
                                     </label>
                                     <input
                                         id="name"
                                         type="text"
-                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-black"
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
                                         required
@@ -178,12 +178,12 @@ export default function AuthModal({ onClose }) {
 
                             <button
                                 type="submit"
-                                className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition disabled:opacity-50"
+                                className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition disabled:opacity-50 dark:text-black"
                                 disabled={loading}
                             >
                                 {loading ? (
                                     <span className="flex items-center justify-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white dark:text-black" xmlns="http://www.w3.org/2000/svg"
                          fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
                               strokeWidth="4"></circle>
