@@ -3,10 +3,11 @@
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth';
 import { useRouter } from 'next/navigation';
+import {useTranslations} from "next-intl";
 
 export default function MainCTA() {
     const { isAuthenticated,setAuthModalOpen } = useContext(AuthContext);
-
+    const t = useTranslations("MainCTA");
     const router = useRouter();
 
     return (
@@ -16,14 +17,14 @@ export default function MainCTA() {
                     onClick={() => router.push('/questionaire')}
                     className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition font-medium"
                 >
-                    Start Questionnaire
+                    {t("button.start_question")}
                 </button>
             ) : (
                 <button
                     onClick={() => setAuthModalOpen(true)}
                     className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition font-medium"
                 >
-                    Get Started
+                    {t("button.get_started")}
                 </button>
             )}
             <button
@@ -33,7 +34,7 @@ export default function MainCTA() {
                 }}
                 className="border border-blue-600 text-blue-600 px-8 py-3 rounded-full hover:bg-blue-50 transition font-medium"
             >
-                Learn More
+                {t("button.learn_more")}
             </button>
         </div>
     );

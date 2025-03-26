@@ -2,9 +2,11 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import {useTranslations} from "next-intl";
 
 export default function TestimonialCarousel({ testimonials }) {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const t = useTranslations("TestimonialCarousel");
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -17,7 +19,7 @@ export default function TestimonialCarousel({ testimonials }) {
         <section id="testimonials" className="py-20 bg-white dark:text-black">
             <div className="container mx-auto px-6 dark:text-black">
                 <h2 className="text-3xl font-bold text-center text-gray-800 mb-16 dark:text-black">
-                    What Our Users Say
+                    {t("title")}
                 </h2>
 
                 <div className="relative h-96 overflow-hidden dark:text-black">

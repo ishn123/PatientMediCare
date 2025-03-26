@@ -1,0 +1,60 @@
+{
+  "HeaderBar": {
+    "title": "MediMatch",
+    "o1": "Wie funktioniert es",
+    "o2": "Über uns",
+    "o3": "Erfahrungsberichte",
+    "o4": "Anmelden/Registrieren",
+    "logout": "Abmelden",
+    "hello": "Hallo"
+  },
+  "TestimonialCarousel": {
+    "title": "Was unsere Kunden sagen "
+  },
+  "LocaleSwitcher": {
+    "label": "Sprache ändern",
+    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unbekannt}}"
+  },
+  "HomePage": {
+    "bannerText": "Unser erweiterter Fragebogen findet für Sie das optimale Medikament basierend auf Ihrem individuellen Gesundheitsprofil.",
+    "HeroBanner": {
+      "h1": "Personalisierte Pillenempfehlungen",
+      "span": "Passen Sie es für Sie an"
+    },
+    "WorksSection": {
+      "motion_h2": "Einfacher, wissenschaftlich fundierter Prozess",
+      "motion_div": {
+        "o1": {
+          "title": "Erstellen Sie Ihr Profile",
+          "description": "Registrieren Sie sich sicher und geben Sie grundlegende Gesundheitsinformationen an, um loszulegen."
+        },
+        "o2": {
+          "title": "Füllen Sie unseren Fragebogen aus",
+          "description": "Beantworten Sie unsere detaillierte Gesundheitsbewertung, die von medizinischen Experten entwickelt wurde."
+        },
+        "o3": {
+          "title": "Holen Sie sich Ihre Empfehlung",
+          "description": "Erhalten Sie innerhalb weniger Minuten Ihre personalisierte Pillenempfehlung."
+        }
+      }
+    },
+    "AboutSection": {
+      "h2": "Über unser Unternehmen",
+      "p1": "Wir sind ein Team aus medizinischen Fachkräften und Datenwissenschaftlern, das sich der Verbesserung der Medikamenteneinnahmetreue und der Ergebnisse durch personalisierte Empfehlungen verschrieben hat.",
+      "p2": "Unser firmeneigener Algorithmus analysiert Hunderte von Datenpunkten, um Patienten das Medikament zuzuweisen, das für ihren spezifischen Zustand und ihre Physiologie am wahrscheinlichsten wirksam ist.",
+      "p3": "Unsere Empfehlungen basieren auf Peer-Review-Forschung",
+      "p4": "Klinisch erwiesen"
+    },
+    "CTASection": {
+      "h2": "Bereit, Ihren perfekten Partner zu finden?",
+      "p": "Nehmen Sie noch heute an unserem 5-minütigen Fragebogen teil und erhalten Sie Ihre persönliche Empfehlung."
+    }
+  },
+  "MainCTA": {
+    "button": {
+      "start_question": "Frage starten",
+      "get_started": "Legen Sie los",
+      "learn_more": "Erfahren Sie mehr"
+    }
+  }
+}

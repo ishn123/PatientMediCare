@@ -1,14 +1,16 @@
 "use client";
 import { motion } from 'framer-motion';
-import Header from '../components/Header';
-import MainCTA from '../components/MainCTA';
-import TestimonialCarousel from '../components/TestimonialCarousel';
-import { testimonials } from '../data/testimonials';
+import Header from '../../components/Header';
+import MainCTA from '../../components/MainCTA';
+import TestimonialCarousel from '../../components/TestimonialCarousel';
+import { testimonials } from '../../data/testimonials';
 import {useState} from "react";
 import PricingCards from "@/components/PricingCard";
+import {useTranslations} from "next-intl";
 
 export default function Home() {
     const [authModalOpen, setAuthModalOpen] = useState(false);
+    const t = useTranslations("HomePage");
     return (
         <>
             <Header />
@@ -18,10 +20,10 @@ export default function Home() {
                     <div className="container mx-auto px-6 flex flex-col md:flex-row items-center">
                         <div className="md:w-1/2 mb-12 md:mb-0">
                             <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-                                Personalized Pill Recommendations <span className="text-blue-600">Tailored For You</span>
+                                {t("HeroBanner.h1")} <span className="text-blue-600">{t("HeroBanner.span")}</span>
                             </h1>
                             <p className="text-lg text-gray-600 mb-8">
-                                Our advanced questionnaire matches you with the optimal medication based on your unique health profile.
+                                {t('bannerText')}
                             </p>
                             <MainCTA/>
                         </div>
@@ -47,27 +49,27 @@ export default function Home() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.5 }}
                         >
-                            Simple, Science-Backed Process
+                            {t("WorksSection.motion_h2")}
                         </motion.h2>
 
                         <div className="grid md:grid-cols-3 gap-10 dark:text-gray-800">
                             {[
                                 {
                                     number: "1",
-                                    title: "Create Your Profile",
-                                    description: "Register securely and provide basic health information to get started.",
+                                    title: t("WorksSection.motion_div.o1.title"),
+                                    description: t("WorksSection.motion_div.o1.description"),
                                     icon: "👤"
                                 },
                                 {
                                     number: "2",
-                                    title: "Complete Our Questionnaire",
-                                    description: "Answer our detailed health assessment developed by medical experts.",
+                                    title: t("WorksSection.motion_div.o2.title"),
+                                    description: t("WorksSection.motion_div.o2.description"),
                                     icon: "📝"
                                 },
                                 {
                                     number: "3",
-                                    title: "Get Your Recommendation",
-                                    description: "Receive your personalized pill recommendation within minutes.",
+                                    title: t("WorksSection.motion_div.o3.title"),
+                                    description: t("WorksSection.motion_div.o3.description"),
                                     icon: "💊"
                                 }
                             ].map((step, index) => (
@@ -123,12 +125,12 @@ export default function Home() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
-                            <h2 className="text-3xl font-bold text-gray-800 mb-6 dark:text-white">About Our Company</h2>
+                            <h2 className="text-3xl font-bold text-gray-800 mb-6 dark:text-white">{t("AboutSection.h2")}</h2>
                             <p className="text-gray-600 mb-6 dark:text-white">
-                                We&apos;re a team of medical professionals and data scientists committed to improving medication adherence and outcomes through personalized recommendations.
+                                {t("AboutSection.p1")}
                             </p>
                             <p className="text-gray-600 mb-6 dark:text-white">
-                                Our proprietary algorithm analyzes hundreds of data points to match patients with the medication most likely to be effective for their specific condition and physiology.
+                                {t("AboutSection.p2")}
                             </p>
                             <div className="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm">
                                 <div className="bg-blue-100 rounded-full p-3">
@@ -137,7 +139,7 @@ export default function Home() {
                                     </svg>
                                 </div>
                                 <p className="text-gray-600">
-                                    <span className="font-semibold">Clinically Validated</span> - Our recommendations are based on peer-reviewed research.
+                                    <span className="font-semibold">{t("AboutSection.p4")}</span> - {t("AboutSection.p3")}
                                 </p>
                             </div>
                         </motion.div>
@@ -185,9 +187,9 @@ export default function Home() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-3xl font-bold mb-6">Ready to Find Your Perfect Match?</h2>
+                        <h2 className="text-3xl font-bold mb-6">{t("CTASection.h2")}</h2>
                         <p className="text-xl mb-10 max-w-2xl mx-auto">
-                            Take our 5-minute questionnaire and receive your personalized recommendation today.
+                            {t("CTASection.p")}
                         </p>
                     </motion.div>
 

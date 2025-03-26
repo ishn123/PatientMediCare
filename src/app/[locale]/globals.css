@@ -1,9 +1,9 @@
-@import "tailwindcss";
+@import "../../../node_modules/tailwindcss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "../styles/tailwind-dark.css";
-@config "../../tailwind.config.mjs";
+@import "../../styles/tailwind-dark.css";
+@config "../../../tailwind.config.mjs";
 /* global.css */
 @layer base {
   html {

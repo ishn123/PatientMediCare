@@ -1,0 +1,60 @@
+{
+  "HeaderBar": {
+    "title": "MediMatch",
+    "o1": "How it Works",
+    "o2": "About Us",
+    "o3": "Testimonials",
+    "o4": "Login/Register",
+    "logout": "Logout",
+    "hello": "Hi"
+  },
+  "TestimonialCarousel": {
+    "title": "What our users say"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unknown}}"
+  },
+  "HomePage": {
+    "bannerText": "Our advanced questionnaire matches you with the optimal medication based on your unique health profile.",
+    "HeroBanner": {
+      "h1": "Personalized Pill Recommendations",
+      "span": "Tailored for you"
+    },
+    "WorksSection": {
+      "motion_h2": "Simple, Science-Backed Process",
+      "motion_div": {
+        "o1": {
+          "title": "Create Your Profile",
+          "description": "Register securely and provide basic health information to get started."
+        },
+        "o2": {
+          "title": "Complete Our Questionnaire",
+          "description": "Answer our detailed health assessment developed by medical experts."
+        },
+        "o3": {
+          "title": "Get Your Recommendation",
+          "description": "Receive your personalized pill recommendation within minutes."
+        }
+      }
+    },
+    "AboutSection": {
+      "h2": "About Our Company",
+      "p1": "We're a team of medical professionals and data scientists committed to improving medication adherence and outcomes through personalized recommendations.",
+      "p2": "Our proprietary algorithm analyzes hundreds of data points to match patients with the medication most likely to be effective for their specific condition and physiology.",
+      "p3": "Our recommendations are based on peer-reviewed research",
+      "p4": "Clinically validated"
+    },
+    "CTASection": {
+      "h2": "Ready to find your Perfect Match?",
+      "p": "Take our 5-minute questionnaire and receive your personalized recommendation today."
+    }
+  },
+  "MainCTA": {
+    "button": {
+      "start_question": "Start Questionaire",
+      "get_started": "Get Started",
+      "learn_more": "Learn More"
+    }
+  }
+}
