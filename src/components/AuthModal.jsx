@@ -4,6 +4,7 @@ import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../context/auth';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
+import {useTranslations} from "next-intl";
 
 export default function AuthModal({ onClose }) {
     const [isLogin, setIsLogin] = useState(true);
@@ -12,7 +13,7 @@ export default function AuthModal({ onClose }) {
     const [name, setName] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
-
+    const t = useTranslations("AuthModal");
     const isMobile = useMediaQuery({ maxWidth: 768 });
     const { login, register } = useContext(AuthContext);
 
@@ -115,7 +116,7 @@ export default function AuthModal({ onClose }) {
           `}>
                         <div className="flex justify-between items-center mb-6 dark:text-black">
                             <h2 className="text-2xl font-bold dark:text-black">
-                                {isLogin ? 'Sign In 🙏🏼' : 'Create Account'}
+                                {isLogin ? ` ${t("sign_in")}🙏🏼` : `${t("create_account")}`}
                             </h2>
                             {!isMobile && (
                                 <button onClick={onClose} className="text-gray-500 hover:text-gray-700 dark:text-black">
@@ -134,7 +135,7 @@ export default function AuthModal({ onClose }) {
                             {!isLogin && (
                                 <div className="mb-4">
                                     <label className="block text-gray-700 mb-2 dark:text-black" htmlFor="name">
-                                        Full Name
+                                        {t("full_name")}
                                     </label>
                                     <input
                                         id="name"
@@ -149,7 +150,7 @@ export default function AuthModal({ onClose }) {
 
                             <div className="mb-4">
                                 <label className="block text-gray-700 mb-2" htmlFor="email">
-                                    Email
+                                    {t("email")}
                                 </label>
                                 <input
                                     id="email"
@@ -163,7 +164,7 @@ export default function AuthModal({ onClose }) {
 
                             <div className="mb-6">
                                 <label className="block text-gray-700 mb-2" htmlFor="password">
-                                    Password
+                                    {t("password")}
                                 </label>
                                 <input
                                     id="password"
@@ -190,9 +191,9 @@ export default function AuthModal({ onClose }) {
                       <path className="opacity-75" fill="currentColor"
                             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Processing...
+                                        {t("processing")}
                   </span>
-                                ) : isLogin ? 'Sign In' : 'Register'}
+                                ) : isLogin ? t("sign_in") : t("create_account")}
                             </button>
                         </form>
 
@@ -202,8 +203,8 @@ export default function AuthModal({ onClose }) {
                                 className="text-blue-600 hover:text-blue-800"
                             >
                                 {isLogin
-                                    ? "Need an account? Register here"
-                                    : "Already have an account? Sign in"}
+                                    ? t("register")
+                                    : t("already_account")}
                             </button>
                         </div>
                     </div>
@@ -214,7 +215,7 @@ export default function AuthModal({ onClose }) {
                                 onClick={onClose}
                                 className="text-gray-600 font-medium"
                             >
-                                Close
+                                {t("close")}
                             </button>
                         </div>
                     )}

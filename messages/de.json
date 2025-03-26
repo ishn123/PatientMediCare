@@ -1,4 +1,16 @@
 {
+  "AuthModal": {
+    "email": "Email-Addresse",
+    "processing": "Warten...",
+    "register": "Brauche ein Konto, Registerien Sie",
+    "already_account": "Sie haben bereits ein Konto? Anmelden",
+    "close": "Schließen",
+    "sign_in": "Anmelden",
+    "create_account": "Registerien",
+    "full_name": "Vollständiger Name",
+    "last_name": "NachName",
+    "password": "Passwort"
+  },
   "HeaderBar": {
     "title": "MediMatch",
     "o1": "Wie funktioniert es",
@@ -56,5 +68,50 @@
       "get_started": "Legen Sie los",
       "learn_more": "Erfahren Sie mehr"
     }
+  },
+  "questionaire": {
+    "title1": "Patienteninformation",
+    "title2": "Gesundheitsinformationen",
+    "title3": "Medikamentendetails",
+    "title4": "Nebenwirkungen",
+    "title5": "Zusätzliche Kommentare",
+    "questions": {
+      "q1_label": "Name",
+      "q2_label": "Geburtsdatum",
+      "q3_label": "Geschlecht",
+      "q4_label": "Datum der Befragung",
+      "q5_label": "Behandelnder Arzt",
+      "q6_label": "Haben Sie derzeit bekannte Vorerkrankungen?",
+      "q7_label": "Nehmen Sie derzeit andere Medikamente ein?",
+      "q8_label": "Haben Sie Allergien oder Unverträglichkeiten?",
+      "q9_label": "Sind Sie derzeit schwanger?",
+      "q10_label": "Steht bei Ihnen eine Operation bevor oder hatten Sie kürzlich eine?",
+      "q11_label": "Wie heißt Ihr verschriebenes Medikament?",
+      "q12_label": "Warum wurde Ihnen dieses Medikament verschrieben?",
+      "q13_label": "Wie oft nehmen Sie dieses Medikament ein?",
+      "q14_label": "Dosierung",
+      "q15_label": "Nehmen Sie das Medikament vor, während oder nach den Mahlzeiten ein?",
+      "q16_label": "Haben Sie Schwierigkeiten, die Tabletten zu schlucken?",
+      "q17_label": "Haben Sie seit der Einnahme dieses Medikaments Nebenwirkungen bemerkt?",
+      "q18_label": "Hat sich Ihr allgemeiner Zustand seit der Einnahme dieses Medikaments verbessert?",
+      "q19_label": "Haben Sie jemals vergessen, Ihr Medikament einzunehmen?",
+      "q20_label": "Kommentar"
+    },
+    "yes": "Ja",
+    "no": "Nein",
+    "unchanged": "unverändert",
+    "man": "Mann",
+    "female": "Frau",
+    "diverse": "Divers",
+    "1_time": "1x täglich",
+    "2_time": "2x täglich",
+    "3_time": "3x täglich",
+    "as_needed": "Bei Bedarf",
+    "eating": {
+      "before": "Vor dem Essen",
+      "after": "Nach dem Essen",
+      "during": "Während des Essens"
+    }
   }
+
 }

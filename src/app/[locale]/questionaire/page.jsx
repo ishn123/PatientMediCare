@@ -3,9 +3,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import {useTranslations} from "next-intl";
 
 export default function Questionnaire() {
     const router = useRouter();
+    const t = useTranslations("questionaire")
     const [currentSection, setCurrentSection] = useState(0);
     const [formData, setFormData] = useState({
         // Patient Information
@@ -41,110 +43,110 @@ export default function Questionnaire() {
 
     const sections = [
         {
-            title: "Patient Information",
+            title: t("title1"),
             questions: [
-                { id: 'name', label: "Name", type: 'text' },
-                { id: 'birthDate', label: "Date of Birth", type: 'date' },
+                { id: 'name', label: t("questions.q1_label"), type: 'text' },
+                { id: 'birthDate', label: t("questions.q2_label"), type: 'date' },
                 {
                     id: 'gender',
-                    label: "Gender",
+                    label: t("questions.q3_label"),
                     type: 'radio',
-                    options: ['Male', 'Female', 'Diverse']
+                    options: [t("man"), t("female"),  t("diverse")]
                 },
-                { id: 'surveyDate', label: "Survey Date", type: 'date' },
-                { id: 'doctor', label: "Treating Physician", type: 'text' }
+                { id: 'surveyDate', label: t("questions.q4_label"), type: 'date' },
+                { id: 'doctor', label: t("questions.q5_label"), type: 'text' }
             ]
         },
         {
-            title: "Health Information",
+            title: t("title2"),
             questions: [
                 {
                     id: 'conditions',
-                    label: "Do you currently have any known pre-existing conditions?",
+                    label: t("questions.q6_label"),
                     type: 'conditional',
-                    options: ['Yes', 'No']
+                    options: [t("yes"), t("no")]
                 },
                 {
                     id: 'medications',
-                    label: "Are you currently taking other medications?",
+                    label: t("questions.q7_label"),
                     type: 'conditional',
-                    options: ['Yes', 'No']
+                    options: [t("yes"), t("no")]
                 },
                 {
                     id: 'allergies',
-                    label: "Do you have any allergies or intolerances?",
+                    label: t("questions.q8_label"),
                     type: 'conditional',
-                    options: ['Yes', 'No']
+                    options: [t("yes"), t("no")]
                 },
                 {
                     id: 'pregnant',
-                    label: "Are you currently pregnant?",
+                    label: t("questions.q9_label"),
                     type: 'radio',
-                    options: ['Yes', 'No']
+                    options: [t("yes"), t("no")]
                 },
                 {
                     id: 'surgery',
-                    label: "Do you have upcoming surgery or recently had surgery?",
+                    label: t("questions.q10_label"),
                     type: 'radio',
-                    options: ['Yes', 'No']
+                    options: [t("yes"), t("no")]
                 }
             ]
         },
         {
-            title: "Medication Details",
+            title: t("title3"),
             questions: [
-                { id: 'medicationName', label: "What is the name of your prescribed medication?", type: 'text' },
-                { id: 'purpose', label: "Why was this medication prescribed to you?", type: 'textarea' },
+                { id: 'medicationName', label: t("questions.q11_label"), type: 'text' },
+                { id: 'purpose', label: t("questions.q12_label"), type: 'textarea' },
                 {
                     id: 'frequency',
-                    label: "How often do you take this medication?",
+                    label: t("questions.q13_label"),
                     type: 'radio',
-                    options: ['1x daily', '2x daily', '3x daily', 'As needed']
+                    options: [t("1_time"), t("2_time"), t("3_time"), t("as_needed")]
                 },
                 { id: 'dosage', label: "Dosage", type: 'text' },
                 {
                     id: 'withFood',
-                    label: "Do you take medication before, during or after meals?",
+                    label: t("questions.q15_label"),
                     type: 'radio',
-                    options: ['Before eating', 'During eating', 'After eating']
+                    options: [t("eating.before"), t("eating.during"), t("eating.after")]
                 },
                 {
                     id: 'swallowing',
-                    label: "Do you have difficulty swallowing the tablets?",
+                    label: t("questions.q16_label"),
                     type: 'radio',
-                    options: ['Yes', 'No']
+                    options: [t("yes"), t("no")]
                 }
             ]
         },
         {
-            title: "Side Effects",
+            title: t("title4"),
             questions: [
                 {
                     id: 'sideEffects',
-                    label: "Have you noticed any side effects since taking this medication?",
+                    label: t("questions.q17_label"),
                     type: 'conditional',
-                    options: ['Yes', 'No']
+                    options: [t("yes"), t("no")]
                 },
                 {
                     id: 'improvement',
-                    label: "Has your general condition improved since taking this medication?",
+                    label: t("questions.q18_label"),
                     type: 'radio',
-                    options: ['Yes', 'No', 'Unchanged']
+                    options: [t("yes"), t("no"), t("unchanged")]
                 },
                 {
                     id: 'missedDoses',
-                    label: "Have you ever forgotten to take your medication?",
+                    label: t("questions.q19_label"),
                     type: 'conditional',
-                    options: ['Yes', 'No']
+                    options: [t("yes"), t("no")]
                 }
             ]
         },
         {
-            title: "Additional Comments",
+            title: t("title5"),
             questions: [
                 {
                     id: 'comments',
-                    label: "Do you have any other questions or concerns about taking this medication?",
+                    label: t("questions.q20_label"),
                     type: 'textarea'
                 }
             ]

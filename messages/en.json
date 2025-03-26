@@ -1,4 +1,16 @@
 {
+  "AuthModal": {
+    "email": "Email",
+    "processing": "Processing...",
+    "register": "Need an account? Register here",
+    "already_account": "Already have an account? Sign in",
+    "close": "Close",
+    "sign_in": "Sign In",
+    "create_account": "Create Account",
+    "full_name": "Full Name",
+    "last_name": "Last Name",
+    "password": "Password"
+  },
   "HeaderBar": {
     "title": "MediMatch",
     "o1": "How it Works",
@@ -55,6 +67,50 @@
       "start_question": "Start Questionaire",
       "get_started": "Get Started",
       "learn_more": "Learn More"
+    }
+  },
+  "questionaire": {
+    "title1": "Patient Information",
+    "title2": "Health Information",
+    "title3": "Medication Details",
+    "title4": "Side Effects",
+    "title5": "Additional Comments",
+    "questions": {
+      "q1_label":"Name",
+      "q2_label": "Date of Birth",
+      "q3_label": "Gender",
+      "q4_label": "Survey Date",
+      "q5_label": "Treating Physician",
+      "q6_label": "Do you currently have any known pre-existing conditions?",
+      "q7_label": "Are you currently taking other medications?",
+      "q8_label": "Do you have any allergies or intolerances?",
+      "q9_label": "Are you currently pregnant?",
+      "q10_label": "Do you have upcoming surgery or recently had surgery?",
+      "q11_label": "What is the name of your prescribed medication?",
+      "q12_label": "Why was this medication prescribed to you?",
+      "q13_label": "How often do you take this medication?",
+      "q14_label": "Dosage",
+      "q15_label": "Do you take medication before, during or after meals?",
+      "q16_label": "Do you have difficulty swallowing the tablets?",
+      "q17_label": "Have you noticed any side effects since taking this medication?",
+      "q18_label": "Has your general condition improved since taking this medication?",
+      "q19_label": "Have you ever forgotten to take your medication?",
+      "q20_label": "Comments"
+    },
+    "yes": "Yes",
+    "no": "No",
+    "unchanged": "unchanged",
+    "man": "Man",
+    "female": "Female",
+    "diverse": "Diverse",
+    "1_time": "1x daily",
+    "2_time": "2x daily",
+    "3_time": "3x daily",
+    "as_needed": "As needed",
+    "eating": {
+      "before": "Before eating",
+      "after": "After eating",
+      "during": "During eating"
     }
   }
 }
