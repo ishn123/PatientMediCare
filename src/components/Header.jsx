@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useContext } from 'react';
+import {useState, useContext, useEffect} from 'react';
 import { AuthContext } from '../context/auth';
 import AuthModal from './AuthModal';
 import Link from 'next/link';
@@ -13,7 +13,9 @@ export default function Header() {
     const {authModalOpen, setAuthModalOpen} = useContext(AuthContext);
     const { user, isAuthenticated, logout } = useContext(AuthContext);
     const t = useTranslations("HeaderBar");
-
+    useEffect(()=>{
+        console.log("Hader")
+    })
     return (
         <header className="bg-white shadow-sm sticky top-0 z-50 dark:bg-gray-800">
             <div className="container mx-auto px-6 py-4 flex justify-between items-center">

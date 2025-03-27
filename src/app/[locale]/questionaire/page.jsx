@@ -1,12 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import {useContext, useState} from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import {useTranslations} from "next-intl";
-
+import {db} from "../../../lib/firebase.config";
+import { collection, addDoc } from 'firebase/firestore';
+import {AuthContext} from "@/context/auth";
 export default function Questionnaire() {
     const router = useRouter();
+    const {user} = useContext(AuthContext);
     const t = useTranslations("questionaire")
     const [currentSection, setCurrentSection] = useState(0);
     const [formData, setFormData] = useState({
@@ -167,14 +170,35 @@ export default function Questionnaire() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
+
         e.preventDefault();
+
         // Submit logic here
+        try {
+            const userId = user.email.split("@")[0]; // Unique ID based on email prefix
+            const questionsRef = collection(db, "users", userId, "questions"); // Correct reference
+
+            const docRef = await addDoc(questionsRef, formData); // Add data to subcollection
+            console.log("Document saved with the ID", docRef.id);
+
+            localStorage.setItem(user.email, JSON.stringify({ id: docRef.id })); // Store doc ID
+        } catch (e) {
+            console.log("Problem saving questions", e);
+        }
+
+
+
+
+
+
+
+
         router.push('/results');
     };
 
     const nextSection = () => {
-        setCurrentSection(prev => Math.min(prev + 1, sections.length - 1));
+        setCurrentSection(prev => Math.min(prev + 1, sections.length-1));
     };
 
     const prevSection = () => {
@@ -328,7 +352,7 @@ export default function Questionnaire() {
                                 Back
                             </motion.button>
 
-                            {currentSection < sections.length - 1 ? (
+                            {currentSection < sections.length - 1 && (
                                 <motion.button
                                     type="button"
                                     onClick={nextSection}
@@ -338,15 +362,21 @@ export default function Questionnaire() {
                                 >
                                     Continue
                                 </motion.button>
-                            ) : (
+                            )}
+                        </div>
+
+                        <div className="flex justify-center p-1.5">
+                            {currentSection >= sections.length - 1 && (
                                 <motion.button
                                     type="submit"
                                     className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
+                                    whileHover={{scale: 1.05}}
+                                    whileTap={{scale: 0.95}}
                                 >
-                                    Submit Questionnaire
+                                    Submit
                                 </motion.button>
+
+
                             )}
                         </div>
                     </form>

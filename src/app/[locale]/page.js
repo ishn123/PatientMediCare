@@ -4,13 +4,29 @@ import Header from '../../components/Header';
 import MainCTA from '../../components/MainCTA';
 import TestimonialCarousel from '../../components/TestimonialCarousel';
 import { testimonials } from '../../data/testimonials';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import PricingCards from "@/components/PricingCard";
 import {useTranslations} from "next-intl";
 
 export default function Home() {
     const [authModalOpen, setAuthModalOpen] = useState(false);
     const t = useTranslations("HomePage");
+    const [particles, setParticles] = useState([]);
+
+    useEffect(() => {
+            const newParticles = [...Array(15)].map(() => ({
+                width: Math.random() * 20 + 10,
+                height: Math.random() * 20 + 10,
+                left: Math.random() * 100,
+                top: Math.random() * 100,
+                y: (Math.random() - 0.5) * 100,
+                x: (Math.random() - 0.5) * 50,
+                rotate: 360,
+                duration: Math.random() * 20 + 10,
+            }));
+            setParticles(newParticles);
+            }, []);
+
     return (
         <>
             <Header />
@@ -155,23 +171,23 @@ export default function Home() {
                 {/* CTA Section */}
                 <section className="py-20 bg-blue-600 text-white relative overflow-hidden">
                     <div className="absolute inset-0 opacity-10">
-                        {[...Array(15)].map((_, i) => (
+                        {particles.map((particle, i) => (
                             <motion.div
                                 key={i}
                                 className="absolute bg-white rounded-full"
                                 style={{
-                                    width: `${Math.random() * 20 + 10}px`,
-                                    height: `${Math.random() * 20 + 10}px`,
-                                    left: `${Math.random() * 100}%`,
-                                    top: `${Math.random() * 100}%`,
+                                    width: `${particle.width}px`,
+                                    height: `${particle.height}px`,
+                                    left: `${particle.left}%`,
+                                    top: `${particle.top}%`,
                                 }}
                                 animate={{
-                                    y: [0, (Math.random() - 0.5) * 100],
-                                    x: [0, (Math.random() - 0.5) * 50],
-                                    rotate: [0, 360],
+                                    y: [0, particle.y],
+                                    x: [0, particle.x],
+                                    rotate: [0, particle.rotate],
                                 }}
                                 transition={{
-                                    duration: Math.random() * 20 + 10,
+                                    duration: particle.duration,
                                     repeat: Infinity,
                                     repeatType: "reverse",
                                     ease: "linear"

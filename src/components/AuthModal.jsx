@@ -5,6 +5,8 @@ import { AuthContext } from '../context/auth';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
 import {useTranslations} from "next-intl";
+import {signInWithEmailAndPassword,createUserWithEmailAndPassword,updateProfile} from "firebase/auth";
+import {auth} from '../lib/firebase.config';
 
 export default function AuthModal({ onClose }) {
     const [isLogin, setIsLogin] = useState(true);
@@ -18,15 +20,25 @@ export default function AuthModal({ onClose }) {
     const { login, register } = useContext(AuthContext);
 
     const handleSubmit = async (e) => {
+
         e.preventDefault();
         setLoading(true);
         setError('');
 
         try {
             if (isLogin) {
-                await login(email, password);
+
+                const response = await signInWithEmailAndPassword(auth,email, password);
+                await updateProfile(response.user,{
+                    displayName:name
+                });
             } else {
-                await register(email, password, name);
+                console.log("Registering user")
+                const response = await createUserWithEmailAndPassword(auth, email, password);
+                console.log("Registering user completed")
+                await updateProfile(response.user,{
+                    displayName:name
+                })
             }
             onClose();
         } catch (err) {
