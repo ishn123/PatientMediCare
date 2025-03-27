@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try{
-            await signOut();
+            await signOut(auth);
             setUser(null);
             setIsAuthenticated(false);
         }catch (exception){
