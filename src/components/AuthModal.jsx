@@ -17,7 +17,7 @@ export default function AuthModal({ onClose }) {
     const [error, setError] = useState('');
     const t = useTranslations("AuthModal");
     const isMobile = useMediaQuery({ maxWidth: 768 });
-    const { login, register } = useContext(AuthContext);
+    const { login, register,setUser } = useContext(AuthContext);
 
     const handleSubmit = async (e) => {
 
@@ -29,9 +29,7 @@ export default function AuthModal({ onClose }) {
             if (isLogin) {
 
                 const response = await signInWithEmailAndPassword(auth,email, password);
-                await updateProfile(response.user,{
-                    displayName:name
-                });
+                const displayName = response.user.displayName ? response.user.displayName : response.user.email;
             } else {
                 console.log("Registering user")
                 const response = await createUserWithEmailAndPassword(auth, email, password);

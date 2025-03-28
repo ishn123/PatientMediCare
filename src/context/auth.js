@@ -45,14 +45,21 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth,(user)=>{
-            setUser({email:user?.email,name:user.displayName});
-            setIsAuthenticated(true);
+            console.log(user)
+            if(user) {
+                setUser({email:user.email, name: user.displayName?user.displayName:user.email,idToken:user.accessToken});
+                setIsAuthenticated(true);
+            }
+            else {
+                setUser(null);
+                setIsAuthenticated(false);
+            }
         })
         return ()=>unsubscribe();
     }, []);
 
     return (
-        <AuthContext.Provider value={{ user, isAuthenticated, login, register, logout ,authModalOpen ,setAuthModalOpen}}>
+        <AuthContext.Provider value={{ user, isAuthenticated, login, register, logout ,authModalOpen ,setAuthModalOpen,setUser}}>
             {children}
         </AuthContext.Provider>
     );

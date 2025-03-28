@@ -13,9 +13,7 @@ export default function Header() {
     const {authModalOpen, setAuthModalOpen} = useContext(AuthContext);
     const { user, isAuthenticated, logout } = useContext(AuthContext);
     const t = useTranslations("HeaderBar");
-    useEffect(()=>{
-        console.log("Hader")
-    })
+    console.log(user)
     return (
         <header className="bg-white shadow-sm sticky top-0 z-50 dark:bg-gray-800">
             <div className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -28,7 +26,7 @@ export default function Header() {
 
                     {isAuthenticated ? (
                         <div className="flex items-center space-x-4">
-                            <span className="text-gray-700">{t("hello")}, {user.name}</span>
+                            <span className="text-gray-700">{t("hello")}, {user?.name}</span>
                             <button onClick={logout}
                                     className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full hover:bg-gray-300 transition">
                                 {t("logout")}

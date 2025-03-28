@@ -4,9 +4,10 @@ import {useContext, useState} from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import {useTranslations} from "next-intl";
-import {db} from "../../../lib/firebase.config";
-import { collection, addDoc } from 'firebase/firestore';
+import {db} from "@/lib/firebase.config";
+import { collection, addDoc,serverTimestamp ,setDoc,doc} from 'firebase/firestore';
 import {AuthContext} from "@/context/auth";
+
 export default function Questionnaire() {
     const router = useRouter();
     const {user} = useContext(AuthContext);
@@ -173,28 +174,32 @@ export default function Questionnaire() {
     const handleSubmit = async (e) => {
 
         e.preventDefault();
-
-        // Submit logic here
+        console.log(formData)
         try {
-            const userId = user.email.split("@")[0]; // Unique ID based on email prefix
-            const questionsRef = collection(db, "users", userId, "questions"); // Correct reference
+            const response = await fetch('/api/submit-questionaire', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    userEmail: user.email,
+                })
+            });
 
-            const docRef = await addDoc(questionsRef, formData); // Add data to subcollection
-            console.log("Document saved with the ID", docRef.id);
+            const result = await response.json();
 
-            localStorage.setItem(user.email, JSON.stringify({ id: docRef.id })); // Store doc ID
+            if (response.ok) {
+                localStorage.setItem(user.email, JSON.stringify({ id: result.submissionId }));
+                localStorage.setItem("DATA", JSON.stringify(formData));
+                router.push('/results');
+            } else {
+                throw new Error(result.error || 'Submission failed');
+            }
         } catch (e) {
-            console.log("Problem saving questions", e);
+            console.error("Submission error:", e);
+            // Show error to user
         }
-
-
-
-
-
-
-
-
-        router.push('/results');
     };
 
     const nextSection = () => {
