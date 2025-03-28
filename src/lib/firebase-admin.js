@@ -1,5 +1,4 @@
 import admin from "firebase-admin"
-import * as serviceAccount from "@/../pillsrecommendation-firebase-adminsdk-fbsvc-e7fb459e63.json";
 
 if (!admin.apps.length) {
     // Initialize the Firebase Admin SDK (use service account credentials for production)
