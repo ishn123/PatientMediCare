@@ -10,7 +10,6 @@ export default async function POST(req, res) {
     try {
         const { formData, userEmail } = req.body;
         const userId = userEmail.split('@')[0];
-
         const questionsRef = collection(db, "users", userId, "questions");
         const dataToSave = {
             ...formData,

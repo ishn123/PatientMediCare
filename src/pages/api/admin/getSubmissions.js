@@ -1,41 +1,46 @@
-import { collection, getDocs,query,where,getDoc } from "firebase/firestore";
+import { collection, getDocs,query,where,getDoc,doc } from "firebase/firestore";
 import { db } from "@/lib/firebase.config";
-import { verifyAdmin } from "../middleware";
-
-export default async function GET(req, res) {
-    if (req.method !== "GET") {
+export default async function POST(req, res) {
+    if (req.method !== "POST") {
         return res.status(405).json({ error: "Method Not Allowed" });
     }
 
-
     try {
-        const submissionsRef = collection(db, "submissions");
-        const q = query(submissionsRef,where("status","==","pending"));
-        const snapshot = await getDocs(q);
-        //const submissions = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        const submissions = await Promise.all(
-            snapshot.docs.map(async (doc) => {
-                const submissionData = doc.data();
-                const userRef = submissionData.userRef; // This is the Firestore document reference for the user
+        const documentId = req.body.documentId;
 
-                // Fetch the user document using the userRef (reference to the users collection)
-                const userDoc = await getDoc(userRef);
-                console.log("user ref is ",userDoc.data());
-                const userData = userDoc.exists() ? userDoc.data() : null;
+        // Fetch the specific submission document
+        const submissionDocRef = doc(db, "submissions", documentId);
+        const submissionSnap = await getDoc(submissionDocRef);
 
+        if (!submissionSnap.exists()) {
+            return res.status(404).json({ error: "Submission not found" });
+        }
 
-                // Return the submission with user details (optional)
-                return {
-                    id: doc.id,
-                    ...submissionData,
-                    user: userData ? { id: userDoc.id, ...userData } : null, // Attach user data if needed
-                };
-            })
-        );
+        const submissionData = submissionSnap.data();
+        const userRefIdForCurrentEmail = submissionData.userId; // Reference to the user
 
-        res.status(200).json(submissions);
+        if (!userRefIdForCurrentEmail) {
+            return res.status(400).json({ error: "User reference not found in submission" });
+        }
+
+        // Fetch all questions under "users/{userRef}/questions"
+        const questionsRef = collection(db, "users", userRefIdForCurrentEmail, "questions");
+        const questionsSnapshot = await getDocs(questionsRef);
+
+        let questions = [];
+        questionsSnapshot.forEach((doc) => {
+            questions.push({
+                id: doc.id,
+                ...doc.data(),
+            });
+        });
+
+        // Filter out the current userRefId
+        questions = questions.filter((item) => item.id !== userRefIdForCurrentEmail);
+
+        return res.status(200).json(questions);
     } catch (error) {
         console.error("Error fetching submissions:", error);
-        res.status(500).json({ error: "Internal Server Error" });
+        return res.status(500).json({ error: "Internal Server Error" });
     }
 }
