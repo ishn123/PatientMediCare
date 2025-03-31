@@ -192,7 +192,7 @@ export default function Questionnaire() {
             if (response.ok) {
                 localStorage.setItem(user.email, JSON.stringify({ id: result.submissionId }));
                 localStorage.setItem("DATA", JSON.stringify(formData));
-                router.push('/results');
+                router.push('/dashboard');
             } else {
                 throw new Error(result.error || 'Submission failed');
             }
