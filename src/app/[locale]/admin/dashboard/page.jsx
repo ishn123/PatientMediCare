@@ -53,7 +53,6 @@ const AdminDashboard = () => {
                     rejected: data.filter(s => s.status === 'rejected').length
                 };
                 setStats(stats);
-                setIsAdmin(true);
             } catch (error) {
                 console.error('Error fetching data:', error);
             } finally {
@@ -63,6 +62,7 @@ const AdminDashboard = () => {
         try{
             if(checkAdmin()) {
                 fetchData();
+                setIsAdmin(true);
             }
         }catch(error){
             setIsAdmin(false);
