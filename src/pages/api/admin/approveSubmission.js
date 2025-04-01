@@ -117,7 +117,7 @@ export default async function POST(req, res) {
                             
                             <div class="details">
                                 <div class="detail-item">
-                                    <span class="detail-label">Submission ID:</span> ${submissionData.id}
+                                    <span class="detail-label">Submission ID:</span> ${submissionId}
                                 </div>
                                 <div class="detail-item">
                                     <span class="detail-label">Date Approved:</span> ${new Date().toLocaleDateString()}
